@@ -2,3 +2,5 @@ alarm.wav
 ./venv
 /venv/
 .idea
+.vscode
+*.snap

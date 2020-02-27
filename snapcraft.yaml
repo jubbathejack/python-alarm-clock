@@ -1,0 +1,28 @@
+name: python-alarm
+version: '0.0.1'
+summary: Python alarm clock
+description: |
+    This is a very basic python script that plays an internet radio station (BBC Radio 1)
+    for 5 minutes at a specified time.
+base: core18
+confinement: devmode
+grade: devel
+
+parts:
+    python-alarm:
+        plugin: python
+        python-version: python3
+        python-packages:
+            - python-mpd2
+        source: .
+        stage-packages:
+            - mpd
+            - mpc
+            - libaudio-dev
+
+apps:
+    python-alarm:
+        command: bin/python-alarm
+        plugs:
+            - network
+            - pulseaudio
