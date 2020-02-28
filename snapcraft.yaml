@@ -12,17 +12,15 @@ parts:
     python-alarm:
         plugin: python
         python-version: python3
-        python-packages:
-            - python-mpd2
         source: .
         stage-packages:
-            - mpd
             - mpc
-            - libaudio-dev
+            - mpd
+            - libaudio2
 
 apps:
     python-alarm:
         command: bin/python-alarm
         plugs:
             - network
-            - pulseaudio
+            - audio-playback
