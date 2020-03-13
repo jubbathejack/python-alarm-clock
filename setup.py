@@ -20,6 +20,6 @@ setup(
         'License :: OSI Approved :: MPL License',
         'Programming Language :: Python :: 3'
     ],
-    scripts=["bin/python-alarm"],
+    scripts=["bin/python-alarm.py"],
     python_requires='>=3.5'
 )

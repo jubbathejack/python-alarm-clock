@@ -20,7 +20,7 @@ parts:
 
 apps:
     python-alarm:
-        command: bin/python-alarm
+        command: bin/python-alarm.py
         plugs:
             - network
             - audio-playback
