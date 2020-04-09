@@ -14,9 +14,11 @@ parts:
         python-version: python3
         source: .
         stage-packages:
-            - mpc
-            - mpd
-            - libaudio2
+            - mplayer
+            - libgpm2
+            - libglu1-mesa
+            - freeglut3
+            - libslang2
 
 apps:
     python-alarm:

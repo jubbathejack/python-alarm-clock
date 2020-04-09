@@ -12,19 +12,13 @@ url = 'http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p'
 
 class Player:
     def __init__(self):
-        pass
+        self.p = None
 
-    def load(self, url):
-        subprocess.run(["mpc", "add", url])
-
-    def play(self):
-        subprocess.run(["mpc", "play", "1"])
+    def play(self, radio_link):
+        self.p = subprocess.Popen(f"mplayer {radio_link} >/dev/null 2>&1", shell=True)
 
     def stop(self):
-        subprocess.run(["mpc", "stop"])
-
-    def delete(self):
-        subprocess.run(["mpc", "del", "1"])
+        self.p.kill()
 
 
 player = Player()
@@ -36,16 +30,13 @@ try:
     else:
         print("Alarm!")
         time_end = time.time() + 60 * 5
-        player.load(url=url)
-        player.play()
+        player.play(radio_link=url)
         while time.time() < time_end:
             continue
         else:
             player.stop()
-            player.delete()
             exit(0)
 except KeyboardInterrupt:
     player.stop()
-    player.delete()
     print("Cancelled by user.")
     exit(1)
