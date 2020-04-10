@@ -4,15 +4,18 @@ import datetime
 import time
 import subprocess
 import yaml
+import os
 
 # print("Please enter a time in 24H format like HH:MM:SS.")
 # userTime = input()
 #
 # url = 'http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p'
 
+config_location = str(os.environ['$SNAP_DATA'] + '/options/config.yml')
+
 config = []
 
-with open(r'/etc/python-alarm/config.yml') as file:
+with open(fr'{config_location}') as file:
     documents = yaml.safe_load(file)
 
     for item, doc in documents.items():

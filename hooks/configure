@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+url="$(snapctl get url)"
+alarm_time="$(snapctl get alarm_time)"
+
+if [ -z "$url" -o -z "$alarm_time" ]; then
+  echo "URL and alarm time need to be configured."
+  exit 1
+fi
+
+mkdir -m 600 $SNAP_DATA/options
+echo "url: $url" > $SNAP_DATA/options/config.yml
+echo "alarm_time: $alarm_time" >> $SNAP_DATA/options/config.yml

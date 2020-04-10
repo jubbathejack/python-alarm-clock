@@ -21,6 +21,12 @@ parts:
             - libslang2
             - python3-yaml
 
+    hooks:
+        plugin: dump
+        source: hooks/
+        organize:
+            bin/: snap/hooks/
+
 layout:
     /etc/python-alarm/config.yml:
         bind-file: $SNAP_DATA/etc/python-alarm/config.yml
@@ -31,3 +37,8 @@ apps:
         plugs:
             - network
             - audio-playback
+
+hooks:
+    configure:
+        plugs:
+            - network
