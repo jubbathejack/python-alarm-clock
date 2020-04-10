@@ -19,6 +19,11 @@ parts:
             - libglu1-mesa
             - freeglut3
             - libslang2
+            - python3-yaml
+
+layout:
+    /etc/python-alarm/config.yml:
+        bind-file: $SNAP_DATA/etc/python-alarm/config.yml
 
 apps:
     python-alarm:

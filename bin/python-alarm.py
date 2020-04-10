@@ -3,11 +3,25 @@
 import datetime
 import time
 import subprocess
+import yaml
 
-print("Please enter a time in 24H format like HH:MM:SS.")
-userTime = input()
+# print("Please enter a time in 24H format like HH:MM:SS.")
+# userTime = input()
+#
+# url = 'http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p'
 
-url = 'http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p'
+config = []
+
+with open(r'/etc/python-alarm/config.yml') as file:
+    documents = yaml.safe_load(file)
+
+    for item, doc in documents.items():
+        config.append(doc)
+
+url = config[0]
+alarm_time = config[1]
+
+print(url)
 
 
 class Player:
@@ -25,7 +39,7 @@ player = Player()
 
 
 try:
-    while userTime != datetime.datetime.now().strftime("%H:%M:%S"):
+    while alarm_time != datetime.datetime.now().strftime("%H:%M:%S"):
         pass
     else:
         print("Alarm!")
